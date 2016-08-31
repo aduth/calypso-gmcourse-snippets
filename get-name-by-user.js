@@ -3,7 +3,7 @@ export function getNameByUser( user ) {
 		'aduth': 'Andrew Duthie'
 	};
 
-	if ( ! ( user in names ) ) {
+	if ( ! names.hasOwnProperty( user ) ) {
 		throw new TypeError();
 	}
 
