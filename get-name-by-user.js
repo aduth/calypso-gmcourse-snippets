@@ -1,11 +1,11 @@
-export function getNameByUser( user ) {
-	const names = {
-		'aduth': 'Andrew Duthie'
-	};
+const names = {
+	'aduth': 'Andrew Duthie'
+};
 
-	if ( ! names.hasOwnProperty( user ) ) {
-		throw new TypeError();
+export function getNameByUser( user ) {
+	if ( names.hasOwnProperty( user ) ) {
+		return names[ user ];
 	}
 
-	return names[ user ];
+	throw new TypeError();
 }
