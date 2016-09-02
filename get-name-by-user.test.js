@@ -13,4 +13,12 @@ describe( 'getNameByUser()', () => {
 	it( 'should return a user\'s name', () => {
 		expect( getNameByUser( 'aduth' ) ).to.equal( 'Andrew Duthie' );
 	} );
+
+	it( 'should optionally accept an object of names', () => {
+		const names = { 'ockham': 'Bernie Reiter' };
+
+		const name = getNameByUser( 'ockham', names );
+
+		expect( name ).to.equal( 'Bernie Reiter' );
+	} );
 } );
