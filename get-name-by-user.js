@@ -1,6 +1,4 @@
-const names = {
-	'aduth': 'Andrew Duthie'
-};
+import { names } from './constants';
 
 export function getNameByUser( user ) {
 	if ( names.hasOwnProperty( user ) ) {
