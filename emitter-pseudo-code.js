@@ -11,7 +11,7 @@ class SitesList extends EventEmitter {
 		return this.data || [];
 	}
 
-	fetch() {
+	async fetch() {
 		this.data = await wpcom.me.sites();
 		this.emit( 'change' );
 	}
