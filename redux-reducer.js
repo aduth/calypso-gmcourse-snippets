@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 export function requesting( state = false, action ) {
 	switch ( action.type ) {
 		case 'SITES_REQUEST':
@@ -20,9 +22,4 @@ export function items( state = null, action ) {
 	return state;
 }
 
-export default function sites( state, action ) {
-	return {
-		requesting: requesting( state, action ),
-		items: items( state, action )
-	};
-}
+export default combineReducers( { requesting, items } );
