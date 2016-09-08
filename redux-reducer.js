@@ -1,12 +1,17 @@
-export default function sites( state = null, action ) {
+const DEFAULT_STATE = { requesting: false, items: null };
+
+export default function sites( state = DEFAULT_STATE, action ) {
 	switch ( action.type ) {
+		case 'SITES_REQUEST':
+			return { ...state, requesting: true };
+
+		case 'SITES_REQUEST_SUCCESS':
+		case 'SITES_REQUEST_FAILURE':
+			return { ...state, requesting: false };
+
 		case 'SITES_RECEIVE':
-			return action.sites;
+			return { ...state, items: action.sites };
 	}
 
 	return state;
 }
-
-// sites( undefined, { type: 'USER_RECEIVE' } )                 => null
-// sites( null,      { type: 'SITES_RECEIVE', sites: [] } )     => []
-// sites( [],        { type: 'SELECTED_SITE_SET', siteId: 1 } ) => []
