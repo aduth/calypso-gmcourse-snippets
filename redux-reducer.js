@@ -1,17 +1,28 @@
-const DEFAULT_STATE = { requesting: false, items: null };
-
-export default function sites( state = DEFAULT_STATE, action ) {
+export function requesting( state = false, action ) {
 	switch ( action.type ) {
 		case 'SITES_REQUEST':
-			return { ...state, requesting: true };
+			return true;
 
 		case 'SITES_REQUEST_SUCCESS':
 		case 'SITES_REQUEST_FAILURE':
-			return { ...state, requesting: false };
-
-		case 'SITES_RECEIVE':
-			return { ...state, items: action.sites };
+			return false;
 	}
 
 	return state;
+}
+
+export function items( state = null, action ) {
+	switch ( action.type ) {
+		case 'SITES_RECEIVE':
+			return action.sites;
+	}
+
+	return state;
+}
+
+export default function sites( state, action ) {
+	return {
+		requesting: requesting( state, action ),
+		items: items( state, action )
+	};
 }
