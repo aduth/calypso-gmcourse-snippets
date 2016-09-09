@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { keyBy } from 'lodash';
 
 export function requesting( state = false, action ) {
 	switch ( action.type ) {
@@ -21,6 +22,13 @@ export function items( state = null, action ) {
 	switch ( action.type ) {
 		case SITES_RECEIVE:
 			return keyBy( action.sites, 'ID' );
+
+		case DESERIALIZE:
+			if ( isStateValidWithSchema( state, schema ) ) {
+				return state;
+			}
+
+			return null;
 	}
 
 	return state;
