@@ -7,9 +7,11 @@ export function receiveSites( sites ) {
 	};
 }
 
-export function fetchSites() {
+export function requestSites() {
 	return async ( dispatch ) => {
+		dispatch( { type: 'SITES_REQUEST' } );
 		const sites = await wpcom.me().sites();
 		dispatch( receiveSites( sites ) );
-	}
+		dispatch( { type: 'SITES_REQUEST_SUCCESS' } );
+	};
 }
