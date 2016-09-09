@@ -1,4 +1,4 @@
-import wpcom from 'lib/wp';
+import wpcom from './wpcom';
 
 export function receiveSites( sites ) {
 	return {
