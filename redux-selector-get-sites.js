@@ -1,5 +1,6 @@
 import { values } from 'lodash';
+import createSelector from 'state/utils';
 
-export function getSites( state ) {
+export const getSites = createSelector( ( state ) => {
 	return values( state.sites.items );
-}
+} );
