@@ -5,7 +5,8 @@ import {
 	SITES_REQUEST_FAILURE,
 	SITES_REQUEST_SUCCESS,
 	SITES_RECEIVE,
-	DESERIALIZE
+	DESERIALIZE,
+	SERIALIZE
 } from './action-types';
 
 export function requesting( state = false, action ) {
