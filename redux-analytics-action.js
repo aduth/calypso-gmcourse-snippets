@@ -1,5 +1,7 @@
 dispatch( {
 	type: POST_EDIT,
+	siteId: 2916284,
+	postId: 1084,
 	post: {
 		author: 41217097
 	},
