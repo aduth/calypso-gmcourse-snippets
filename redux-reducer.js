@@ -20,7 +20,7 @@ export function requesting( state = false, action ) {
 export function items( state = null, action ) {
 	switch ( action.type ) {
 		case SITES_RECEIVE:
-			return action.sites;
+			return keyBy( action.sites, 'ID' );
 	}
 
 	return state;
