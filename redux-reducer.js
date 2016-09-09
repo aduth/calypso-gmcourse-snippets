@@ -18,8 +18,20 @@ export function requesting( state = false, action ) {
 	return state;
 }
 
-export const items = createReducer( null, {
-	[ SITES_RECEIVE ]: ( state, action ) => keyBy( action.sites, 'ID' )
-}, schema );
+export function items( state = null, action ) {
+	switch ( action.type ) {
+		case SITES_RECEIVE:
+			return keyBy( action.sites, 'ID' );
+
+		case DESERIALIZE:
+			if ( isStateValidWithSchema( state, schema ) ) {
+				return state;
+			}
+
+			return null;
+	}
+
+	return state;
+}
 
 export default combineReducers( { requesting, items } );
