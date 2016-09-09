@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
 import { keyBy } from 'lodash';
+import {
+	SITES_REQUEST,
+	SITES_REQUEST_FAILURE,
+	SITES_REQUEST_SUCCESS,
+	SITES_RECEIVE,
+	DESERIALIZE
+} from './action-types';
 
 export function requesting( state = false, action ) {
 	switch ( action.type ) {
