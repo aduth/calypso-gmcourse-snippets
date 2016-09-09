@@ -2,11 +2,15 @@ import { combineReducers } from 'redux';
 
 export function requesting( state = false, action ) {
 	switch ( action.type ) {
-		case 'SITES_REQUEST':
+		case SITES_REQUEST:
 			return true;
 
-		case 'SITES_REQUEST_SUCCESS':
-		case 'SITES_REQUEST_FAILURE':
+		case SITES_REQUEST_SUCCESS:
+		case SITES_REQUEST_FAILURE:
+			return false;
+
+		case DESERIALIZE:
+		case SERIALIZE:
 			return false;
 	}
 
@@ -15,7 +19,7 @@ export function requesting( state = false, action ) {
 
 export function items( state = null, action ) {
 	switch ( action.type ) {
-		case 'SITES_RECEIVE':
+		case SITES_RECEIVE:
 			return action.sites;
 	}
 
