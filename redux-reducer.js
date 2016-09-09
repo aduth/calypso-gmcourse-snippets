@@ -8,6 +8,8 @@ import {
 	DESERIALIZE,
 	SERIALIZE
 } from './action-types';
+import createReducer from './util-create-reducer';
+let schema;
 
 export function requesting( state = false, action ) {
 	switch ( action.type ) {
@@ -26,20 +28,11 @@ export function requesting( state = false, action ) {
 	return state;
 }
 
-export function items( state = null, action ) {
-	switch ( action.type ) {
-		case SITES_RECEIVE:
-			return keyBy( action.sites, 'ID' );
-
-		case DESERIALIZE:
-			if ( isStateValidWithSchema( state, schema ) ) {
-				return state;
-			}
-
-			return null;
+export const items = createReducer( {}, {
+	[ SITES_RECEIVE ]: ( state, action ) => {
+		return Object.assign( {}, state, keyBy( action.sites, 'ID' ) );
+		// OR: return { ...state, ...keyBy( action.sites, 'ID' ) };
 	}
-
-	return state;
-}
+}, schema );
 
 export default combineReducers( { requesting, items } );

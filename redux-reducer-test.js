@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import { requesting, items } from './redux-reducer';
+import deepFreeze from 'deep-freeze';
 import {
 	SITES_REQUEST,
 	SITES_REQUEST_FAILURE,
@@ -47,7 +48,18 @@ describe( 'reducer', () => {
 		it( 'should default to null', () => {
 		} );
 
-		it( 'should return object of received sites by ID', () => {
+		it( 'should return merged object of received sites by ID', () => {
+			const original = deepFreeze( {} );
+			const sites = [ { ID: 2916284, name: 'WordPress.com Example Sites' } ];
+			const state = items( original, {
+				type: SITES_RECEIVE,
+				sites
+			} );
+
+			expect( state ).to.not.equal( original );
+			expect( state ).to.eql( {
+				2916284: { ID: 2916284, name: 'WordPress.com Example Sites' }
+			} );
 		} );
 
 		it( 'should return same state on serialize', () => {
