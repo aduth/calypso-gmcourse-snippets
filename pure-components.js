@@ -1,4 +1,5 @@
 import React, { Component, PureComponent } from 'react';
+import ReactDom from 'react-dom';
 
 class Greeting extends PureComponent {
 	render() {
@@ -6,6 +7,15 @@ class Greeting extends PureComponent {
 	}
 }
 
-function App() {
-	return <Greeting user={ { name: 'Andrew' } } />
+function App( { user } ) {
+	return <Greeting user={ user } />
 }
+
+function renderApp( user ) {
+	ReactDom.render( <App user={ user } />, document.body );
+}
+
+const user = { name: 'Andrew' };
+renderApp( user );
+user.name = 'Bernie';
+renderApp( user );
