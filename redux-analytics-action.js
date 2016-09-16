@@ -6,13 +6,13 @@ dispatch( {
 		author: 41217097
 	},
 	meta: {
-		analytics: [
+		analytics: [ {
 			type: ANALYTICS_EVENT_RECORD,
 			payload: {
 				service: 'ga',
 				category: 'Editor',
 				action: 'Changed Author'
 			}
-		]
+		} ]
 	}
 } );
