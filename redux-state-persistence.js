@@ -5,11 +5,12 @@ const storageState = localStorage.getItem( 'redux-state' );
 
 let initialState;
 if ( null !== storageState ) {
-	initialState = storageState;
+	initialState = JSON.parse( storageState );
 }
 
 const store = createStore( reducer, initialState );
 
 store.subscribe( () => {
-	localStorage.setItem( 'redux-state', store.getState() );
+	const serializedState = JSON.stringify( store.getState() );
+	localStorage.setItem( 'redux-state', serializedState );
 } );
